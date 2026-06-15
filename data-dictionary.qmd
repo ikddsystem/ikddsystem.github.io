@@ -2,26 +2,37 @@
 title: "Data dictionary"
 ---
 
-The canonical data dictionary lives in the **`ikdds-etl`** package and defines, for
-every registry field: the REDCap field code, the UKRR v5.1 mapping, the eMed source
-column, type, transform, and validation rules.
+The canonical data dictionary lives in the **`ikdds-etl`** package
+(`redcap_dictionary` + `field_mapping`) and is the single source of truth for every
+registry field: REDCap field code, UKRR v5.1 mapping, eMed source column, type,
+transform, and validation rules.
 
-> 🚧 **Planned:** this page will be generated automatically from
-> `ikdds-etl/inst/dictionary/ikdds_dictionary.yml`. Until that lands, see the
-> [ikdds-etl reference](https://ikddsystem.github.io/ikdds-etl/) and the converted
-> [REDCap data dictionary](https://github.com/ikddsystem/ikdds-data-management-documentation/blob/main/docs/redcap/NESKDDSSample_DataDictionary_2025-05-14.md).
+The pages below are **auto-generated from that package metadata** by
+`ikdds::generate_markdown_docs()` and refreshed by CI whenever the dictionary changes:
+
+- [**Data dictionary**](reference/data-dictionary.md) — every field, grouped by form
+- [**Data Requirements Specification (DRS)**](reference/DRS.md) — fields + eMed→REDCap source mappings
+- [**Case Report Form (CRF)**](reference/CRF.md) — form-by-form field layout
+
+Machine-readable exports (consumed by `ikdds-nlp` and `ikdds-data-management`):
+
+- [`ikdds_dictionary.yml`](https://github.com/ikddsystem/ikdds-etl/blob/main/inst/dictionary/ikdds_dictionary.yml)
+- [`ikdds_dictionary.json`](https://github.com/ikddsystem/ikdds-etl/blob/main/inst/dictionary/ikdds_dictionary.json)
 
 ## Forms
 
 | Form | Fields | ETL status |
 |------|-------:|-----------|
-| demographics | 20 | implemented |
+| registry_enrolment | 1 | implemented |
+| demographics | 25 | implemented |
 | diagnoses | 11 | implemented |
 | renal_treatment | 7 | stub |
 | hd_prescription | 4 | stub |
 | hd_sessions | 5 | stub |
-| lab_results | 121 | stub |
+| lab_results | 120 | stub |
 | medications | 9 | stub |
 | observations | 14 | stub |
 | transplant | 10 | stub |
 | care_planning | 3 | stub |
+
+*(Field counts above are reflected live in the generated dictionary — 209 fields across 11 forms.)*

@@ -35,6 +35,12 @@ website:
       - section: "Data & governance"
         contents:
           - data-dictionary.qmd
+          - text: "— Data dictionary (generated)"
+            href: reference/data-dictionary.md
+          - text: "— DRS (generated)"
+            href: reference/DRS.md
+          - text: "— CRF (generated)"
+            href: reference/CRF.md
           - text: "Governance docs (private)"
             href: https://github.com/ikddsystem/ikdds-data-management-documentation
       - section: "Future"
