@@ -1,0 +1,32 @@
+---
+title: "Irish Kidney Disease Data System (IKDDS)"
+---
+
+The **IKDDS** is the national data system for End-Stage Kidney Disease (ESKD) and
+haemodialysis audit in Ireland. It extracts patient data from hospital **eMed**
+systems, standardises it to the **UKRR Dataset v5.1**, stores it in **REDCap**, and
+reports it through an interactive audit dashboard.
+
+```{mermaid}
+flowchart LR
+  A[eMed<br/>SQL Server] -->|ETL| B[(REDCap<br/>registry)]
+  B --> C[Dashboard<br/>national HD audit]
+  A -.notes.-> N[ikdds-nlp] -.coded fields.-> A
+  B --> D[ikdds-data-management<br/>QC & reconciliation]
+```
+
+## Repositories
+
+| Repo | Purpose |
+|------|---------|
+| [ikdds-etl](https://github.com/ikddsystem/ikdds-etl) | eMed → UKRR v5.1 → REDCap ETL pipeline. **Canonical data dictionary.** |
+| [ikdds-dashboard](https://github.com/ikddsystem/ikdds-dashboard) | Shiny audit dashboard (23 metrics, 14 pages). |
+| [ikdds-data-management-documentation](https://github.com/ikddsystem/ikdds-data-management-documentation) | Governance docs as Markdown (private). |
+| [ikdds-nlp](https://github.com/ikddsystem/ikdds-nlp) | NLP over eMed clinical notes (scaffold). |
+| [ikdds-data-management](https://github.com/ikddsystem/ikdds-data-management) | Data-manager QC toolkit (scaffold). |
+
+## Documentation principle
+
+Wherever possible, documentation is **auto-generated from code**. The ETL package's
+data dictionary is the single source of truth for field definitions; the DRS, CRF, DMP,
+and the dashboard's field mappings derive from it. See [Architecture](architecture.qmd).

@@ -1,0 +1,36 @@
+---
+title: "Architecture"
+---
+
+## Single source of truth
+
+The **`ikdds-etl`** package metadata is the canonical definition of every registry
+field. All downstream documentation is generated from it, so it cannot drift from the
+code that actually moves the data.
+
+```{mermaid}
+flowchart TD
+  DICT[ikdds-etl<br/>canonical data dictionary] --> DRS[DRS]
+  DICT --> CRF[CRF]
+  DICT --> DMP[DMP]
+  DICT --> DASH[dashboard field mappings<br/>metrics.yml]
+  DICT --> PKG[pkgdown reference]
+  DRS & CRF & DMP & PKG --> HUB[This docs hub]
+```
+
+## Layers
+
+1. **Source** — eMed SQL Server (clinical system).
+2. **ETL** — `ikdds-etl` extracts, transforms to UKRR v5.1, loads to REDCap. Each of
+   9 forms follows `extract_ → transform_ → load_ → etl_`.
+3. **Registry** — REDCap.
+4. **Reporting** — `ikdds-dashboard` (caterpillar/funnel plots, Wilson CIs, small-n
+   suppression).
+5. **Augmentation** — `ikdds-nlp` extracts coded fields from clinical notes.
+6. **Stewardship** — `ikdds-data-management` runs QC, reconciliation, completeness.
+
+## How this hub is built
+
+This site is a [Quarto](https://quarto.org) website published to GitHub Pages. It links
+to each repository's auto-generated `pkgdown` reference and renders the generated
+specifications. Rebuilds are triggered when the ETL dictionary changes.

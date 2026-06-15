@@ -1,0 +1,27 @@
+---
+title: "Data dictionary"
+---
+
+The canonical data dictionary lives in the **`ikdds-etl`** package and defines, for
+every registry field: the REDCap field code, the UKRR v5.1 mapping, the eMed source
+column, type, transform, and validation rules.
+
+> 🚧 **Planned:** this page will be generated automatically from
+> `ikdds-etl/inst/dictionary/ikdds_dictionary.yml`. Until that lands, see the
+> [ikdds-etl reference](https://ikddsystem.github.io/ikdds-etl/) and the converted
+> [REDCap data dictionary](https://github.com/ikddsystem/ikdds-data-management-documentation/blob/main/docs/redcap/NESKDDSSample_DataDictionary_2025-05-14.md).
+
+## Forms
+
+| Form | Fields | ETL status |
+|------|-------:|-----------|
+| demographics | 20 | implemented |
+| diagnoses | 11 | implemented |
+| renal_treatment | 7 | stub |
+| hd_prescription | 4 | stub |
+| hd_sessions | 5 | stub |
+| lab_results | 121 | stub |
+| medications | 9 | stub |
+| observations | 14 | stub |
+| transplant | 10 | stub |
+| care_planning | 3 | stub |

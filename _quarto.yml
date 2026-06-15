@@ -1,0 +1,50 @@
+project:
+  type: website
+  output-dir: _site
+
+website:
+  title: "IKDDS"
+  description: "Irish Kidney Disease Data System — documentation hub"
+  page-footer: "IKDDS · Irish Kidney Disease Data System"
+  navbar:
+    background: primary
+    search: true
+    left:
+      - text: "Home"
+        href: index.qmd
+      - text: "Architecture"
+        href: architecture.qmd
+      - text: "Data dictionary"
+        href: data-dictionary.qmd
+    right:
+      - icon: github
+        href: https://github.com/ikddsystem
+  sidebar:
+    style: docked
+    contents:
+      - section: "Overview"
+        contents:
+          - index.qmd
+          - architecture.qmd
+      - section: "Code"
+        contents:
+          - text: "ikdds-etl (reference)"
+            href: https://ikddsystem.github.io/ikdds-etl/
+          - text: "ikdds-dashboard (reference)"
+            href: https://ikddsystem.github.io/ikdds-dashboard/
+      - section: "Data & governance"
+        contents:
+          - data-dictionary.qmd
+          - text: "Governance docs (private)"
+            href: https://github.com/ikddsystem/ikdds-data-management-documentation
+      - section: "Future"
+        contents:
+          - text: "ikdds-nlp"
+            href: https://github.com/ikddsystem/ikdds-nlp
+          - text: "ikdds-data-management"
+            href: https://github.com/ikddsystem/ikdds-data-management
+
+format:
+  html:
+    theme: cosmo
+    toc: true
