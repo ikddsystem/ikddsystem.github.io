@@ -1,0 +1,110 @@
+[
+  {
+    "objectID": "architecture.html",
+    "href": "architecture.html",
+    "title": "Architecture",
+    "section": "",
+    "text": "The ikdds-etl package metadata is the canonical definition of every registry field. All downstream documentation is generated from it, so it cannot drift from the code that actually moves the data.\n\n\n\n\n\nflowchart TD\n  DICT[ikdds-etl&lt;br/&gt;canonical data dictionary] --&gt; DRS[DRS]\n  DICT --&gt; CRF[CRF]\n  DICT --&gt; DMP[DMP]\n  DICT --&gt; DASH[dashboard field mappings&lt;br/&gt;metrics.yml]\n  DICT --&gt; PKG[pkgdown reference]\n  DRS & CRF & DMP & PKG --&gt; HUB[This docs hub]",
+    "crumbs": [
+      "Home",
+      "Overview",
+      "Architecture"
+    ]
+  },
+  {
+    "objectID": "architecture.html#single-source-of-truth",
+    "href": "architecture.html#single-source-of-truth",
+    "title": "Architecture",
+    "section": "",
+    "text": "The ikdds-etl package metadata is the canonical definition of every registry field. All downstream documentation is generated from it, so it cannot drift from the code that actually moves the data.\n\n\n\n\n\nflowchart TD\n  DICT[ikdds-etl&lt;br/&gt;canonical data dictionary] --&gt; DRS[DRS]\n  DICT --&gt; CRF[CRF]\n  DICT --&gt; DMP[DMP]\n  DICT --&gt; DASH[dashboard field mappings&lt;br/&gt;metrics.yml]\n  DICT --&gt; PKG[pkgdown reference]\n  DRS & CRF & DMP & PKG --&gt; HUB[This docs hub]",
+    "crumbs": [
+      "Home",
+      "Overview",
+      "Architecture"
+    ]
+  },
+  {
+    "objectID": "architecture.html#layers",
+    "href": "architecture.html#layers",
+    "title": "Architecture",
+    "section": "Layers",
+    "text": "Layers\n\nSource — eMed SQL Server (clinical system).\nETL — ikdds-etl extracts, transforms to UKRR v5.1, loads to REDCap. Each of 9 forms follows extract_ → transform_ → load_ → etl_.\nRegistry — REDCap.\nReporting — ikdds-dashboard (caterpillar/funnel plots, Wilson CIs, small-n suppression).\nAugmentation — ikdds-nlp extracts coded fields from clinical notes.\nStewardship — ikdds-data-management runs QC, reconciliation, completeness.",
+    "crumbs": [
+      "Home",
+      "Overview",
+      "Architecture"
+    ]
+  },
+  {
+    "objectID": "architecture.html#how-this-hub-is-built",
+    "href": "architecture.html#how-this-hub-is-built",
+    "title": "Architecture",
+    "section": "How this hub is built",
+    "text": "How this hub is built\nThis site is a Quarto website published to GitHub Pages. It links to each repository’s auto-generated pkgdown reference and renders the generated specifications. Rebuilds are triggered when the ETL dictionary changes.",
+    "crumbs": [
+      "Home",
+      "Overview",
+      "Architecture"
+    ]
+  },
+  {
+    "objectID": "data-dictionary.html",
+    "href": "data-dictionary.html",
+    "title": "Data dictionary",
+    "section": "",
+    "text": "The canonical data dictionary lives in the ikdds-etl package and defines, for every registry field: the REDCap field code, the UKRR v5.1 mapping, the eMed source column, type, transform, and validation rules.",
+    "crumbs": [
+      "Home",
+      "Data & governance",
+      "Data dictionary"
+    ]
+  },
+  {
+    "objectID": "data-dictionary.html#forms",
+    "href": "data-dictionary.html#forms",
+    "title": "Data dictionary",
+    "section": "Forms",
+    "text": "Forms\n\n\n\nForm\nFields\nETL status\n\n\n\n\ndemographics\n20\nimplemented\n\n\ndiagnoses\n11\nimplemented\n\n\nrenal_treatment\n7\nstub\n\n\nhd_prescription\n4\nstub\n\n\nhd_sessions\n5\nstub\n\n\nlab_results\n121\nstub\n\n\nmedications\n9\nstub\n\n\nobservations\n14\nstub\n\n\ntransplant\n10\nstub\n\n\ncare_planning\n3\nstub",
+    "crumbs": [
+      "Home",
+      "Data & governance",
+      "Data dictionary"
+    ]
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Irish Kidney Disease Data System (IKDDS)",
+    "section": "",
+    "text": "The IKDDS is the national data system for End-Stage Kidney Disease (ESKD) and haemodialysis audit in Ireland. It extracts patient data from hospital eMed systems, standardises it to the UKRR Dataset v5.1, stores it in REDCap, and reports it through an interactive audit dashboard.\nflowchart LR\n  A[eMed&lt;br/&gt;SQL Server] --&gt;|ETL| B[(REDCap&lt;br/&gt;registry)]\n  B --&gt; C[Dashboard&lt;br/&gt;national HD audit]\n  A -.notes.-&gt; N[ikdds-nlp] -.coded fields.-&gt; A\n  B --&gt; D[ikdds-data-management&lt;br/&gt;QC & reconciliation]",
+    "crumbs": [
+      "Home",
+      "Overview",
+      "Irish Kidney Disease Data System (IKDDS)"
+    ]
+  },
+  {
+    "objectID": "index.html#repositories",
+    "href": "index.html#repositories",
+    "title": "Irish Kidney Disease Data System (IKDDS)",
+    "section": "Repositories",
+    "text": "Repositories\n\n\n\nRepo\nPurpose\n\n\n\n\nikdds-etl\neMed → UKRR v5.1 → REDCap ETL pipeline. Canonical data dictionary.\n\n\nikdds-dashboard\nShiny audit dashboard (23 metrics, 14 pages).\n\n\nikdds-data-management-documentation\nGovernance docs as Markdown (private).\n\n\nikdds-nlp\nNLP over eMed clinical notes (scaffold).\n\n\nikdds-data-management\nData-manager QC toolkit (scaffold).",
+    "crumbs": [
+      "Home",
+      "Overview",
+      "Irish Kidney Disease Data System (IKDDS)"
+    ]
+  },
+  {
+    "objectID": "index.html#documentation-principle",
+    "href": "index.html#documentation-principle",
+    "title": "Irish Kidney Disease Data System (IKDDS)",
+    "section": "Documentation principle",
+    "text": "Documentation principle\nWherever possible, documentation is auto-generated from code. The ETL package’s data dictionary is the single source of truth for field definitions; the DRS, CRF, DMP, and the dashboard’s field mappings derive from it. See Architecture.",
+    "crumbs": [
+      "Home",
+      "Overview",
+      "Irish Kidney Disease Data System (IKDDS)"
+    ]
+  }
+]
