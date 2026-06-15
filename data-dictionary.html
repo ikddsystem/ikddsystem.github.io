@@ -196,6 +196,24 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./reference/data-dictionary.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">— Data dictionary (generated)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./reference/DRS.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">— DRS (generated)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./reference/CRF.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">— CRF (generated)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="https://github.com/ikddsystem/ikdds-data-management-documentation" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Governance docs (private)</span></a>
   </div>
@@ -261,10 +279,18 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>The canonical data dictionary lives in the <strong><code>ikdds-etl</code></strong> package and defines, for every registry field: the REDCap field code, the UKRR v5.1 mapping, the eMed source column, type, transform, and validation rules.</p>
-<blockquote class="blockquote">
-<p>🚧 <strong>Planned:</strong> this page will be generated automatically from <code>ikdds-etl/inst/dictionary/ikdds_dictionary.yml</code>. Until that lands, see the <a href="https://ikddsystem.github.io/ikdds-etl/">ikdds-etl reference</a> and the converted <a href="https://github.com/ikddsystem/ikdds-data-management-documentation/blob/main/docs/redcap/NESKDDSSample_DataDictionary_2025-05-14.md">REDCap data dictionary</a>.</p>
-</blockquote>
+<p>The canonical data dictionary lives in the <strong><code>ikdds-etl</code></strong> package (<code>redcap_dictionary</code> + <code>field_mapping</code>) and is the single source of truth for every registry field: REDCap field code, UKRR v5.1 mapping, eMed source column, type, transform, and validation rules.</p>
+<p>The pages below are <strong>auto-generated from that package metadata</strong> by <code>ikdds::generate_markdown_docs()</code> and refreshed by CI whenever the dictionary changes:</p>
+<ul>
+<li><a href="./reference/data-dictionary.html"><strong>Data dictionary</strong></a> — every field, grouped by form</li>
+<li><a href="./reference/DRS.html"><strong>Data Requirements Specification (DRS)</strong></a> — fields + eMed→REDCap source mappings</li>
+<li><a href="./reference/CRF.html"><strong>Case Report Form (CRF)</strong></a> — form-by-form field layout</li>
+</ul>
+<p>Machine-readable exports (consumed by <code>ikdds-nlp</code> and <code>ikdds-data-management</code>):</p>
+<ul>
+<li><a href="https://github.com/ikddsystem/ikdds-etl/blob/main/inst/dictionary/ikdds_dictionary.yml"><code>ikdds_dictionary.yml</code></a></li>
+<li><a href="https://github.com/ikddsystem/ikdds-etl/blob/main/inst/dictionary/ikdds_dictionary.json"><code>ikdds_dictionary.json</code></a></li>
+</ul>
 <section id="forms" class="level2">
 <h2 class="anchored" data-anchor-id="forms">Forms</h2>
 <table class="caption-top table">
@@ -277,57 +303,63 @@ ul.task-list li input[type="checkbox"] {
 </thead>
 <tbody>
 <tr class="odd">
-<td>demographics</td>
-<td style="text-align: right;">20</td>
+<td>registry_enrolment</td>
+<td style="text-align: right;">1</td>
 <td>implemented</td>
 </tr>
 <tr class="even">
+<td>demographics</td>
+<td style="text-align: right;">25</td>
+<td>implemented</td>
+</tr>
+<tr class="odd">
 <td>diagnoses</td>
 <td style="text-align: right;">11</td>
 <td>implemented</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>renal_treatment</td>
 <td style="text-align: right;">7</td>
 <td>stub</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>hd_prescription</td>
 <td style="text-align: right;">4</td>
 <td>stub</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>hd_sessions</td>
 <td style="text-align: right;">5</td>
 <td>stub</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>lab_results</td>
-<td style="text-align: right;">121</td>
+<td style="text-align: right;">120</td>
 <td>stub</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>medications</td>
 <td style="text-align: right;">9</td>
 <td>stub</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>observations</td>
 <td style="text-align: right;">14</td>
 <td>stub</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>transplant</td>
 <td style="text-align: right;">10</td>
 <td>stub</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>care_planning</td>
 <td style="text-align: right;">3</td>
 <td>stub</td>
 </tr>
 </tbody>
 </table>
+<p><em>(Field counts above are reflected live in the generated dictionary — 209 fields across 11 forms.)</em></p>
 
 
 </section>
