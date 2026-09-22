@@ -25,7 +25,7 @@ workflow.
 
 | File | Role |
 |---|---|
-| `_quarto.yml` | Site config: navbar, docked sidebar, cosmo theme. Add new pages here. |
+| `_quarto.yml` | Site config: navbar, docked sidebar, cosmo theme. Add new pages here. The `project.render` list is an allow-list (`*.qmd` + `reference/*.md`) so repo docs like this file are not published as site pages. |
 | `index.qmd` | Landing page with the eMed → ETL → REDCap → dashboard Mermaid flow and repo table. |
 | `architecture.qmd` | Single-source-of-truth diagram and the six system layers. |
 | `data-dictionary.qmd` | Explains the generated docs and lists forms with ETL status. |
@@ -47,8 +47,13 @@ Mermaid diagrams are native Quarto `{mermaid}` blocks; no extra tooling needed.
 
 ## Known state
 
-- The repo is **private**, so GitHub Pages does not serve the site on the Free plan even
-  though the workflow deploys to `gh-pages` successfully. Flip to public (after a
-  secret/PII scan) or upgrade the plan to serve it.
+- The repo is **public** and GitHub Pages serves from the `gh-pages` branch. It was private
+  until 2026-09-22, which meant Pages could not serve it on the org's Free plan; it was
+  flipped to public after a secret/PII scan of the working tree and full git history found
+  nothing sensitive. Keep it that way: no staff names/emails, no patient data, nothing
+  copied from the private governance repo.
+- `reference/DRS.md` publishes eMed table and column names. Those are internal schema
+  names, not secrets, but they are now public — factor that in before adding source
+  mappings.
 - Automatic refresh of `reference/*.md` requires the org secret `DOCS_DISPATCH_TOKEN`;
   until it is set, copies must be refreshed manually from `ikdds-etl`.
